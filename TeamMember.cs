@@ -19,5 +19,7 @@ namespace Heist
     public class TeamList
     {
         public List<TeamMember> Team = new List<TeamMember>();
+        public int Successes { get; set; }
+        public int Fails { get; set; }
     }
 }

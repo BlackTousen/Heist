@@ -19,6 +19,7 @@ namespace Heist
             {
                 goto BankSetup;
             }
+            Target.BankDifficulty(bankDiff);
             while (true)
             {
                 Console.Write("What do you call this team member? ");
@@ -41,18 +42,21 @@ namespace Heist
             int trys = 0;
             while (trys < attemptNum)
             {
-                Target.GetDifficulty();
+                Target.GetLuck();
                 Console.WriteLine($"The bank's difficulty level: {Target.GetDifficulty() + Target.Luck} ");
                 if (totalSkill >= Target.GetDifficulty() + Target.Luck)
                 {
+                    teamList.Successes++;
                     Console.WriteLine("Your team was successful!");
                 }
                 else
                 {
+                    teamList.Fails++;
                     Console.WriteLine("Your team was unsuccessful! Try a new team LOSER.");
                 }
                 trys++;
             }
+            Console.WriteLine($"Successes: {teamList.Successes} - Failures: {teamList.Fails} ");
         }
         static TeamMember BuildTeam(string name)
         {
